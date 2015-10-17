@@ -1,0 +1,42 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+flight_one:
+  id: 1
+  company: Iberia
+  code: FC1234
+  terminal_from: Madrid
+  terminal_to: London
+  datetime_from: "13/03/2014 08:05"
+  datetime_to: <%= Date.new %>
+  reservation_id: 1
+flight_two:
+  id: 2
+  company: Iberia
+  code: FC4321
+  terminal_from: London
+  terminal_to: Madrid
+  datetime_from: "13/03/2014 08:06"
+  datetime_to: <%= Date.new %>
+  reservation_id: 1
+flight_three:
+  id: 3
+  company: Iberia
+  code: FC3234
+  terminal_from: Madrid
+  terminal_to: London
+  datetime_from: <%= Date.today.weeks_since(1) %>
+  datetime_to: <%= Date.today.weeks_since(1) %>
+  reservation_id: 2
+flight_four:
+  id: 4
+  company: Iberia
+  code: FC3321
+  terminal_from: London
+  terminal_to: Madrid
+  datetime_from: <%= Date.today.weeks_since(2) %>
+  datetime_to: <%= Date.today.weeks_since(2) %>
+  reservation_id: 2

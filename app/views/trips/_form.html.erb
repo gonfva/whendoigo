@@ -1,0 +1,63 @@
+<%= link_to trips_path, class: 'pull-right'  do %>
+<span class="glyphicon glyphicon-list-alt"></span> All trips
+<% end %>
+  <%= form_for @trip do |f| %>
+    <% if @trip.errors.any? %>
+      <div id="error_explanation" class="alert alert-danger">
+        <h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+        <ul>
+        <% @trip.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class="container">
+
+      <div class="form-group">
+        <label>Name</label>
+      <%= f.text_field :name, class:"form-control", placeholder:"Put a fancy name for the trip" %>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+      <%= f.text_area :description, class:"form-control", placeholder:"Sometimes a name isn't enough. Fill this field with whatever you need" %>
+      </div>
+      <div class="form-group">
+        <label>Who</label>
+      <%= f.text_field :who, class:"form-control", placeholder:"Who's travelling?" %>
+      </div>
+      <div class="form-group">
+         <label>To</label>
+      <%= f.text_field :destination, class:"form-control", placeholder:"What is the destination place?" %>
+      </div>
+       <div class="form-group">
+         <label>Date from</label>
+      <%= f.text_field :date_from, id:"trip_date_from", class:"form-control", placeholder:"When does it start...?" %>
+      </div>
+      <div class="form-group">
+         <label>Date to</label>
+      <%= f.text_field :date_to, id:"trip_date_to", class:"form-control", placeholder:"... and when does it end?" %>
+      </div>
+
+  </div><!--container -->
+
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+<script>
+  $(function() {
+    $("#trip_date_from" ).datepicker({ dateFormat: "yy-mm-dd" });
+    $("#trip_date_to" ).datepicker({ dateFormat: "yy-mm-dd" });
+    $("#trip_place_from").suggest({key:'<%= ENV["GOOGLE_API_KEY"] %>',filter:'(all type:/location/citytown)'});
+    $("#trip_place_to").suggest({key:'<%= ENV["GOOGLE_API_KEY"] %>',filter:'(all type:/location/citytown)'});
+    $("#trip_date_from").change(function(e){
+      $('#trip_date_to').val(e.target.value);
+    });
+  });
+</script>

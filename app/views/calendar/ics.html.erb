@@ -1,0 +1,42 @@
+<div class="jumbotron">
+  <h1><%= link_to "When do I go?", root_path %></h1>
+  <p>This page contains a list of trips from somebody.</p>
+  <p>But you can create your own list!</p>
+  <p><%= link_to "Sign up free", new_user_registration_path,:class=>"btn btn-lg btn-success" %></p>
+</div>
+<% if @trips.count > 0 %>
+<article class="col-md-10">
+  <%= render  partial:"trips/table_calendar", locals: {trips: @trips} %>
+</article>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date from</th>
+      <th>Date to</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+
+        <td><%= trip.name %></td>
+        <td><%= trip.date_from %></td>
+        <td><%= trip.date_to %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <p>There are no trips to show.</p>
+
+<% end %>
+
+
+
+
+<% content_for :title do %>
+List of trips
+<% end %>

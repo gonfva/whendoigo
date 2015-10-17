@@ -1,0 +1,57 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require jquery-ui
+ */
+
+footer {
+    padding-top: 50px;
+}
+
+.main-content {
+	padding-top: 70px;
+}
+
+.icon-bar {
+	background-color: #fff;
+}
+.devise, .form-group>label {
+	color: #748040;
+}
+.calendar_table{
+	table-layout:fixed;
+}
+.calendar_cell {
+			border: 1px solid black;
+			padding-left:15px;
+}
+.calendar_header_row, .calendar_not_active {
+	border: 0px;
+}
+.calendar_trip_cell {
+	background-color:green;
+	border: 1px solid black;
+	padding-left:15px;
+}
+.calendar_flight_cell {
+	border: 2px solid red;
+	background-color:green;
+	padding-left:15px;
+}
+.calendar_header_column, .calendar_header_row {
+	border: 0px;
+	overflow:visible;
+	font-size:10px;
+}
+.calendar_header_row {
+	padding-right:10px;
+}

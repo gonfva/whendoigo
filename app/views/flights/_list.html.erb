@@ -1,0 +1,32 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Flight code</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Departure</th>
+      <th>Arrival</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% flights.each do |flight| %>
+      <tr>
+
+        <td><%= link_to flight.company, edit_trip_reservation_flight_path(trip,reservation, flight) %></td>
+        <td><%= link_to flight.code, edit_trip_reservation_flight_path(trip,reservation, flight) %></td>
+        <td><%= flight.terminal_from %></td>
+        <td><%= flight.terminal_to %></td>
+        <td><%= flight.datetime_from.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= flight.datetime_to.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= link_to trip_reservation_flight_path(@trip,reservation, flight), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span class="glyphicon glyphicon-trash red"></span>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><!-- Table -->
+

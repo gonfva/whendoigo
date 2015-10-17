@@ -1,0 +1,8 @@
+<h1>Listing flights</h1>
+
+<%= render  partial:"list", locals: {flights: @flights, trip: @trip, reservation: @reservation} %>
+
+<br>
+
+<%= link_to 'New Flight', new_trip_reservation_flight_path(@trip,@reservation) %>
+

@@ -1,0 +1,29 @@
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Who</th>
+      <th>Date from</th>
+      <th>Date to</th>
+      <th>Destination</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% trips.each do |trip| %>
+      <tr>
+
+        <td><%= link_to trip.name, edit_trip_path(trip) %></td>
+        <td><%= trip.description %></td>
+        <td><%= trip.who %></td>
+        <td><%= trip.date_from %></td>
+        <td><%= trip.date_to %></td>
+        <td><%= trip.destination %></td>
+        <td><%= link_to trip, method: :delete, data: { confirm: 'Are you sure?' } do %><span class="glyphicon glyphicon-trash red"></span><% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,2 @@
+module TripsFromEmailHelper
+end

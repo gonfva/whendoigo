@@ -1,0 +1,15 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+.green, .green:hover {
+	color:green;
+}
+.orange, .orange:hover {
+	color:orange;
+}
+.red, .red:hover {
+	color:red;
+}
+
+.pending>tr:last-child { .danger(); }

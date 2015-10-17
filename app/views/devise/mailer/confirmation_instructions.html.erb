@@ -1,0 +1,14 @@
+<p>Welcome <%= @resource.full_name %>!</p>
+
+<p>You've signed up for Whendoigo, a tool to help you manage your trips. Thank you for your interest. </p>
+
+<p>Tu start using it, you can confirm your account email through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
+
+<p>We would really appreciate any comment you could provide.</p>
+
+<p> Kind regards:</p>
+
+<p>Gonzalo Fernandez</p>
+<p>Whendoigo team</p>

@@ -1,0 +1,37 @@
+<div class="container">
+  <table class="calendar_table">
+
+    <%= write_header() %>
+    <% (0..6).each do |weekday| %>
+
+      <tr class="calendar_row">
+        <th class="calendar_header_row"><%=
+          case weekday
+          when 1 then "M"
+          when 3 then "W"
+          when 5 then "F"
+          else " "
+          end
+        %></th>
+      <% (0..50).each do |week| %>
+        <td class="<%=
+          if (week==0 && weekday<Date.today.wday)
+            "calendar_not_active"
+          else
+            if (flight_on_date(trips,week, weekday))
+              "calendar_flight_cell"
+            else
+              if (trip_on_date(trips,week, weekday))
+                "calendar_trip_cell"
+              else
+                "calendar_cell"
+              end
+            end
+          end
+        %>">&nbsp;</td>
+
+      <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

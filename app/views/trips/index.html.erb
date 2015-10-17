@@ -1,0 +1,51 @@
+<h1>List of trips</h1>
+<% if @trips_current.count >0 %>
+<div class="jumbotron">
+  <% @trips_current.each do |trip| %>
+
+  <p class="bg-primary"><span class="center-block"><%= trip.name %> (<%= trip.who %>)</span></p>
+  <% end %>
+</div>
+<% end %>
+<% if @trips_pend.count > 0 %>
+<h2 class="col-md-9">Pending trips</h2>
+  <article class="col-md-10">
+    <%= render  partial:"table_calendar", locals: {trips: @trips_pend} %>
+  </article>
+  <%= render  partial:"list", locals: {trips: @trips_pend} %>
+<% else %>
+  <p>You don't have any pending trips. What about creating a new one</p>
+  <p><%= link_to "Create a new trip", new_trip_path,:class=>"btn btn-lg btn-success" %></p>
+
+<% end %>
+
+<% if @trips_old.count > 0 %>
+
+  <h2>Old trips</h2>
+  <%= render  partial:"list", locals: {trips: @trips_old} %>
+<% end%>
+
+<% if @trips_pend.count > 0 %>
+
+  <%= link_to new_trip_path, :alt=>'Add a new trip', :class=>'green' do %>
+  <span class="glyphicon glyphicon-plus"></span> New trip
+  &nbsp;
+  <% end %>
+  <%= link_to @url_share, :alt=>'Share with your friends', class: 'orange' do %>
+  <span class="glyphicon glyphicon-share"></span> Share
+  <% end %>
+  &nbsp;
+  <%= link_to @url_calendar, :alt=>'Export to an iCal feed', class: 'orange' do %>
+  <span class="glyphicon glyphicon-calendar"></span> Calendar
+  <% end %>
+  &nbsp;
+  <%= link_to export_tripit_path, :alt=>'Export to Tripit', class: 'orange' do %>
+  <span class="glyphicon glyphicon-plane"></span> Tripit
+  <% end %>
+
+
+<% end %>
+
+<% content_for :title do %>
+List of trips
+<% end %>

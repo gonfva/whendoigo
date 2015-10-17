@@ -1,0 +1,19 @@
+<div class="row">
+<h1>Editing trip</h1>
+
+<%= render 'form' %>
+<br>
+<% if @trip.reservations.count> 0 %>
+  <%= render partial:"reservations/list" , object: @trip %>
+
+<% else %>
+<p>No reservations</p>
+<% end %>
+<%= link_to new_trip_reservation_path(@trip) do %>
+  <span class="glyphicon glyphicon-plus"></span>Add reservation
+<% end %>
+</div>
+<% content_for :title do %>
+Edit a trip
+<% end %>
+

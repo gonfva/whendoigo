@@ -1,0 +1,23 @@
+    <% @trip.reservations.each do |reservation| %>
+      <div class="panel panel-default">
+
+        <div class="panel-heading">Reservation
+          <%= link_to reservation.company+ " - "+reservation.code, edit_trip_reservation_path(@trip, reservation) %> <%= link_to trip_reservation_path(@trip, reservation), class: 'pull-right red', method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </div>
+        <div class="panel-body">
+          <p>Company:<%= reservation.company %></p>
+          <p>Code:<%= reservation.code %></p>
+          <p><%= link_to new_trip_reservation_flight_path(@trip,reservation) , :class=>'green' do %>
+            <span class="glyphicon glyphicon-plus"></span> New Flight
+          <% end %></p>
+        </div>
+
+        <% if reservation.flights.count> 0 %>
+          <%= render  partial:"flights/list", locals: {flights: reservation.flights, trip: @trip, reservation: reservation} %>
+        <% end %>
+
+      </div><!-- panel -->
+      <br>
+    <% end %>

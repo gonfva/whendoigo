@@ -1,0 +1,11 @@
+<h1>Listing reservations</h1>
+
+<%= render  partial:"list",  object: @trip  %>
+
+
+<br>
+
+<%= link_to new_trip_reservation_path(@trip) do %>
+  <span class="glyphicon glyphicon-plus"></span>Add reservation
+<% end %>
+

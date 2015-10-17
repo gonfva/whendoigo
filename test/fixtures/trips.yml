@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+trip_one:
+  id: 1
+  name: Tripone
+  date_from: <%= Date.tomorrow %>
+  user_id: 1
+trip_two:
+  id: 2
+  name: Triptwo
+  date_from: <%= Date.today.next_month %>
+  user_id: 1
+trip_three:
+  id: 3
+  name: Tripthree
+  date_from: <%= Date.today.weeks_since(1) %>
+  date_to: <%= Date.today.weeks_since(2) %>
+  user_id: 1
